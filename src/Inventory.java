@@ -38,18 +38,20 @@ public class Inventory {
 		this.stash = null;
 		this.money = 0;
 	}
-	public ArrayList<Item> takeItems()
-	{
-		if(stash.size()>0)
-		{
-			ArrayList<Item> temp = this.stash;
-			this.stash = null;		
-			return temp;
-		}
-		else
-			return null;
-		
-	} 
+	
+//	public ArrayList<Item> takeItems()
+//	{
+//		if(stash.size()>0)
+//		{
+//			ArrayList<Item> temp = this.stash;
+//			this.stash = null;		
+//			return temp;
+//		}
+//		else
+//			return null;
+//		
+//	} 
+	
 	public int takeMoney()
 	{
 		int temp = this.money;
