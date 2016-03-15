@@ -32,13 +32,13 @@ public class House {
 	{
 		//make inventory for each room
 		Inventory one = new Inventory();one.makeFoyerStash();
-		Inventory two = new Inventory();one.makeFrontRoomStash();
-		Inventory three = new Inventory();one.makeLibraryStash();
-		Inventory four = new Inventory();one.makeKitchenStash();
-		Inventory five = new Inventory();one.makeDiningRoomStash();
-		Inventory six = new Inventory();one.makeVaultStash();
-		Inventory seven = new Inventory();one.makeParlorStash();
-		Inventory eigth = new Inventory();one.makeSecretRoomStash();
+		Inventory two = new Inventory();two.makeFrontRoomStash();
+		Inventory three = new Inventory();three.makeLibraryStash();
+		Inventory four = new Inventory();four.makeKitchenStash();
+		Inventory five = new Inventory();five.makeDiningRoomStash();
+		Inventory six = new Inventory();six.makeVaultStash();
+		Inventory seven = new Inventory();seven.makeParlorStash();
+		Inventory eight = new Inventory();eight.makeSecretRoomStash();
 		Inventory skullStash = new Inventory();skullStash.makeSkullStash();
 		
 		
@@ -50,9 +50,9 @@ public class House {
 		Room library = new Room("The library", three, null, false, "You see a lot of spiders on the bookshelves" , new int[] {4,-1,1,-1});
 		Room kitchen = new Room("The kitchen", four, null, false, "Bats fly out of the kitchen as you walk in" , new int[] {6,-1,-1,1});
 		Room diningRoom = new Room("The dining room", five, null, false, "There are a lot of dusty boxes on the dining table" , new int[] {-1,2,-1,-1});
-		Room vault = new Room("The vault", six, vaultEnemy, false, "Three walking skeletons guard the vault" , new int[] {-1,-1,6,7});
+		Vault vault = new Vault("The vault", six, vaultEnemy, false, "Three walking skeletons guard the vault" , new int[] {-1,-1,6,-1});
 		Room parlor = new Room("Parlor", seven, null, false, "A treasure chest lies on the floor. It is locked" , new int[] {-1,3,-1,5});
-		Room secretRoom = new Room("A secret room", eigth, null, false, "Piles of gold line the floor" , new int[] {-1,-1,-1,5});
+		Room secretRoom = new Room("A secret room", eight, null, false, "Piles of gold line the floor" , new int[] {-1,5,-1,-1});
 		Outside outside = new Outside("the great outdoors", null, null,false, "You leave the house. But do you still have your sanity?", new int[]{-1, -1, -1, -1});
 		
 		foyer.setDirections(true, true, false, false);
@@ -60,9 +60,9 @@ public class House {
 		library.setDirections(true, false, true, false);
 		kitchen.setDirections(true, false, false, true);
 		diningRoom.setDirections(false, true, false, false);
-		vault.setDirections(true, false, true, true);
+		vault.setDirections(false, false, true, false);
 		parlor.setDirections(false, true, false, true);
-		secretRoom.setDirections(false, false, false, true);
+		secretRoom.setDirections(false, true, false, false);
 		
 		//adding rooms to house
 		rooms[0]=foyer;

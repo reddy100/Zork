@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.util.Random;
 
-public class Outside extends AbstractRoom{
+public class Vault extends AbstractRoom{
 	private Inventory stash;
 	private ArrayList<Character> enemies;;
 	//private Character player;
@@ -8,7 +9,12 @@ public class Outside extends AbstractRoom{
 	private String message;
 	private boolean north;
 	private boolean south;
+	private boolean east;
+	private boolean west;
+
 	private int[] accessibleRooms;
+	private int secretRoom;
+	private boolean secretRoomFlag;
 	
 	public Inventory getStash() {
 		return stash;
@@ -73,34 +79,69 @@ public class Outside extends AbstractRoom{
 	public void setAccessibleRooms(int[] accessibleRooms) {
 		this.accessibleRooms = accessibleRooms;
 	}
-	private boolean east;
-	private boolean west;
-	private int[] accesssibleRooms;
-	
-	public Outside()
+	public void setDirections(boolean north, boolean south, boolean east, boolean west)
+	{
+		this.north=north;
+		this.south=south;
+		this.east=east;
+		this.west=west;
+	}
+	public Vault()
 	{
 		super.name="";
 		this.stash=null;
 		this.enemies = new ArrayList<Character>();
 		super.isHere=false;
 		this.message="";
-		this.accesssibleRooms=new int[4];
+		this.accessibleRooms=new int[4];
+		this.secretRoom=0;
+		this.secretRoomFlag=false;
 	}
-	public Outside(String name, Inventory stash, ArrayList<Character> enemies, boolean isHere, String message, int [] accesssibleRooms)
+	public Vault(String name, Inventory stash, ArrayList<Character> enemies, boolean isHere, String message, int [] accessibleRooms)
 	{
 		super.name=name;
 		this.stash=stash;
 		this.enemies = enemies;
 		super.isHere=isHere;
 		this.message=message;
-		this.accesssibleRooms = accesssibleRooms;
+		this.accessibleRooms = accessibleRooms;
+		this.secretRoom=0;
+		this.secretRoomFlag=false;
+
 	}
 	@Override
 	public String giveOption()
 	{
-		String finalMessage= "You cannot go back into the house so press (1) to end the game";
-		
-		return finalMessage;
+		Random rand = new Random();
+		this.secretRoom = 1+rand.nextInt(4);
+		if(this.secretRoom==1)
+		{
+			this.secretRoomFlag=true;
+		}
+		if(this.secretRoomFlag)
+		{
+			this.north=true;
+			this.accessibleRooms[0]=7;
+			System.out.println("You have discovered the secret room");
+		}
+		String option = "You can press ";
+		if(this.north)
+		{
+			option+="(n)To go north ";
+		}
+		if(this.south)
+		{
+			option+=" (s)To go south ";
+		}
+		if(this.east)
+		{
+			option+=" (e)To go east ";
+		}
+		if(this.west)
+		{
+			option+=" (w)To go west ";
+		}
+		return option;
 	}
 
 }

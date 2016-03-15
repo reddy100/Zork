@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 
 public class Player extends Character{
 	private int moneyPurse;
+	private ArrayList<AbstractRoom> roomsVisited;
 	public Player()
 	{
 		super.name = "";
@@ -9,6 +11,7 @@ public class Player extends Character{
 		super.attack = 0;
 		super.currentPos = 0;
 		this.moneyPurse=0;
+		this.roomsVisited = new ArrayList<AbstractRoom>();
 	}
 	public Player(String name, Inventory backPack, int moneyPurse,int hp, int attack, int currentPos)
 	{
@@ -18,6 +21,20 @@ public class Player extends Character{
 		super.attack = attack;
 		super.currentPos = currentPos;
 		this.moneyPurse=moneyPurse;
+		this.roomsVisited = new ArrayList<AbstractRoom>();
+
+	}
+	public int getMoneyPurse() {
+		return moneyPurse;
+	}
+	public void setMoneyPurse(int moneyPurse) {
+		this.moneyPurse = moneyPurse;
+	}
+	public ArrayList<AbstractRoom> getRoomsVisited() {
+		return roomsVisited;
+	}
+	public void setRoomsVisited(ArrayList<AbstractRoom> roomsVisited) {
+		this.roomsVisited = roomsVisited;
 	}
 	public void movePlayer(int pos)
 	{
@@ -31,5 +48,10 @@ public class Player extends Character{
 			this.moneyPurse+=roomItems.getMoney();
 		}
 		return;
+	}
+	public void roomsSeen(AbstractRoom r)
+	{
+		if(r!=null)
+			this.roomsVisited.add(r);
 	}
 }

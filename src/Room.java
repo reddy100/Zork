@@ -32,7 +32,10 @@ public class Room extends AbstractRoom{
 		this.accessibleRooms = accessibleRooms;
 	}
 	public Inventory getStash() {
-		return stash;
+		if(stash!=null)
+			return stash;
+		else 
+			return null;
 	}
 	public void setStash(Inventory stash) {
 		this.stash = stash;
@@ -96,19 +99,19 @@ public class Room extends AbstractRoom{
 		String option = "You can press ";
 		if(this.north)
 		{
-			option+="(0)To go north ";
+			option+="(n)To go north ";
 		}
 		if(this.south)
 		{
-			option+=" (1)To go south ";
+			option+=" (s)To go south ";
 		}
 		if(this.east)
 		{
-			option+=" (2)To go east ";
+			option+=" (e)To go east ";
 		}
 		if(this.west)
 		{
-			option+=" (3)To go west ";
+			option+=" (w)To go west ";
 		}
 		return option;
 	}

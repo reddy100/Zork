@@ -18,7 +18,10 @@ public class Inventory {
 	}
 	
 	public ArrayList<Item> getStash() {
-		return stash;
+		if(stash!=null)
+			return stash;
+		else
+			return null;
 	}
 	public void setStash(ArrayList<Item> stash) {
 		this.stash = stash;
@@ -37,9 +40,14 @@ public class Inventory {
 	}
 	public ArrayList<Item> takeItems()
 	{
-		ArrayList<Item> temp = this.stash;
-		this.stash = null;		
-		return temp;
+		if(stash.size()>0)
+		{
+			ArrayList<Item> temp = this.stash;
+			this.stash = null;		
+			return temp;
+		}
+		else
+			return null;
 		
 	} 
 	public int takeMoney()
@@ -52,7 +60,7 @@ public class Inventory {
 	{
 		Item temp = new Item();
 		temp=null;
-		if(ind>=0 && ind<this.stash.size() && this.stash.get(ind)!=null)
+		if(this.stash.size()>0 && ind>=0 && ind<this.stash.size() && this.stash.get(ind)!=null)
 		{
 			temp = this.stash.get(ind);
 			this.stash.remove(ind);	
@@ -82,7 +90,7 @@ public class Inventory {
 	public void makeFoyerStash()
 	{
 		ArrayList<Item> items= new ArrayList<Item>();
-		Item scorpion = new Item("dead scorpion", "You see a dead scorpion", true);
+		Item scorpion = new Item("a dead scorpion", "You see a dead scorpion", true);
 		items.add(scorpion);
 		this.stash = items;
 		this.money=fillMoney();
@@ -90,7 +98,7 @@ public class Inventory {
 	public void makeFrontRoomStash()
 	{
 		ArrayList<Item> items= new ArrayList<Item>();
-		Item piano = new Item("piano", "You see a piano", false);
+		Item piano = new Item("a piano", "You see a piano", false);
 		items.add(piano);
 		this.stash = items;
 		this.money=fillMoney();	
@@ -114,7 +122,7 @@ public class Inventory {
 	public void makeDiningRoomStash()
 	{
 		ArrayList<Item> items= new ArrayList<Item>();
-		Item dustyBoxes = new Item("bats", "There are a lot of dusty boxes on the dining table", false);
+		Item dustyBoxes = new Item("dusty boxes", "There are a lot of dusty boxes on the dining table", false);
 		items.add(dustyBoxes);
 		this.stash = items;
 		this.money=fillMoney();	
@@ -122,7 +130,7 @@ public class Inventory {
 	public void makeVaultStash()
 	{
 		ArrayList<Item> items= new ArrayList<Item>();
-		Item dustyBoxes = new Item("sword", "An ancient sword lies on the ground", true);
+		Item dustyBoxes = new Item("a sword", "An ancient sword lies on the ground", true);
 		items.add(dustyBoxes);
 		this.stash = items;
 		this.money=fillMoney();	
@@ -130,7 +138,7 @@ public class Inventory {
 	public void makeParlorStash()
 	{
 		ArrayList<Item> items= new ArrayList<Item>();
-		Item chest = new Item("treasure chest", "A treasure chest lies on the parlor floor. It is locked",false);
+		Item chest = new Item("a treasure chest", "A treasure chest lies on the parlor floor. It is locked",false);
 		items.add(chest);
 		this.stash = items;
 		this.money=fillMoney();	
