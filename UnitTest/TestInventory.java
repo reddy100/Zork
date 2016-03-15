@@ -70,7 +70,30 @@ public class TestInventory {
 	@Test
 	public void testTakeItems()
 	{
-		
+		Item i = new Item("sword", "picked up sword", true);
+		Item j = new Item("bat", "bats fly", false);
+		Item k = new Item("spiders", "spider webs everywhere", true);
+		Item l = new Item("book", "picked up a book on  finance", true);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);items.add(j);items.add(k);items.add(l);
+		Inventory bag = new Inventory(items, 200);
+		bag.takeItem(2);
+		items.remove(2);
+		assertEquals("Inventory take Item test: ", bag.getStash(), items);
+	}
+	@Test
+	public void testAddAllItemsToInventory()
+	{
+		Item i = new Item("sword", "picked up sword", true);
+		Item j = new Item("bat", "bats fly", false);
+		Item k = new Item("spiders", "spider webs everywhere", true);
+		Item l = new Item("book", "picked up a book on  finance", true);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);items.add(j);items.add(k);items.add(l);
+		Inventory bag1 = new Inventory(items, 200);
+		Inventory bag2 = new Inventory();
+		bag2.addItemsToInventory(bag1);
+		assertEquals("Inventory add all items to Inventory test: ", bag2.getStash(), bag1.getStash());
 	}
 
 }
