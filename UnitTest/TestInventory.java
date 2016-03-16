@@ -95,5 +95,97 @@ public class TestInventory {
 		bag2.addItemsToInventory(bag1);
 		assertEquals("Inventory add all items to Inventory test: ", bag2.getStash(), bag1.getStash());
 	}
-
+	@Test
+	public void testFillMoney()
+	{
+		int j=Inventory.fillMoney();
+		assertTrue(j>=1 && j<=300);
+	}
+	@Test
+	public void testMakeFoyerStash()
+	{
+		Item i = new Item("a dead scorpion", "You see a dead scorpion", true);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);
+		Inventory inv = new Inventory();
+		inv.makeFoyerStash();
+		assertTrue(inv.getStash().get(0).equals(i));
+	}
+	@Test
+	public void testMakeFrontRoomStash()
+	{
+		Item i = new Item("a piano", "You see a piano", false);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);
+		Inventory inv = new Inventory();
+		inv.makeFrontRoomStash();
+		assertTrue(inv.getStash().get(0).equals(i));
+	}
+	@Test
+	public void testMakeLibraryStash()
+	{
+		Item i = new Item("spiders", "Spiders line the bookshelves", true);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);
+		Inventory inv = new Inventory();
+		inv.makeLibraryStash();
+		assertTrue(inv.getStash().get(0).equals(i));
+	}
+	@Test
+	public void testMakeKitchenStash()
+	{
+		Item i = new Item("bats", "Bats fly out of the kitchen as you walk in", true);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);
+		Inventory inv = new Inventory();
+		inv.makeKitchenStash();
+		assertTrue(inv.getStash().get(0).equals(i));
+	}
+	@Test
+	public void testMakeDiningRoomStash()
+	{
+		Item i = new Item("dusty boxes", "There are a lot of dusty boxes on the dining table", false);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);
+		Inventory inv = new Inventory();
+		inv.makeDiningRoomStash();
+		assertTrue(inv.getStash().get(0).equals(i));
+	}
+	@Test
+	public void testMakeVaultStash()
+	{
+		Item i = new Item("a sword", "An ancient sword lies on the ground", true);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);
+		Inventory inv = new Inventory();
+		inv.makeVaultStash();
+		assertTrue(inv.getStash().get(0).equals(i));
+	}
+	@Test
+	public void testMakeParlorStash()
+	{
+		Item i = new Item("a treasure chest", "A treasure chest lies on the parlor floor. It is locked",false);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);
+		Inventory inv = new Inventory();
+		inv.makeParlorStash();
+		assertTrue(inv.getStash().get(0).equals(i));
+	}
+	@Test
+	public void testMakeSecretRoomStash()
+	{
+		Item i = new Item("piles of gold", "piles of gold line the floor",true);
+		ArrayList<Item> items = new ArrayList<Item>();
+		items.add(i);
+		Inventory inv = new Inventory();
+		inv.makeSecretRoomStash();
+		assertTrue(inv.getStash().get(0).equals(i));
+	}
+	@Test
+	public void testMakeSkullStashStash()
+	{
+		Inventory inv = new Inventory();
+		inv.makeSkullStash();
+		assertEquals(inv.getMoney(), 500);
+	}
 }

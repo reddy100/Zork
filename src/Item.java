@@ -15,6 +15,15 @@ public class Item {
 		this.message = message;
 		this.canCarry = canCarry;
 	}
+	public boolean equals(Item i) 
+	 {
+		if (i == null) return false;
+	    if (i.getClass() != getClass()) return false;
+	    if (!name.equals(i.name)) return false;
+	    if (!message.equals(i.message)) return false;
+	    if (canCarry!=i.canCarry) return false;
+	    return true;
+	  }
 	public String getName() {
 		return name;
 	}

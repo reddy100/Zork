@@ -86,7 +86,7 @@ public class Inventory {
 	public static int fillMoney()
 	{
 		Random rand = new Random();
-		return (1+ rand.nextInt(301));
+		return (1+ rand.nextInt(300));
 	}
 	
 	public void makeFoyerStash()
